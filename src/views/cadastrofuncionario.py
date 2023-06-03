@@ -13,7 +13,7 @@ def iniciar():
 
 
 app = QtWidgets.QApplication([])
-formulario = uic.loadUi("cadastro.ui")
+formulario = uic.loadUi('cadastro.ui')
 
 formulario.pushButton_Cadastrar.clicked.connect(iniciar)
 

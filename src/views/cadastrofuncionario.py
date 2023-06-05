@@ -8,6 +8,21 @@ conexao = mysql.connector.connect(
     database = 'zeus'
 )
 
+def lista():
+    lista.show()
+    cursor = conexao.cursor()
+    comando_SQL = 'SELECT * FROM funcionarios'
+    cursor.execute(comando_SQL)
+    leitura_banco = cursor.fetchall()
+
+    lista.tableWidget.setRowCount(len(leitura_banco))
+    lista.tableWidget.setColumnCount(7)
+
+    for i in range (0, len(leitura_banco)): # i = linhas
+        for j in range (0, 7): # j = colunas
+            lista.tableWidget.setItem(i, j, QtWidgets.QTableWidgetItem(str(leitura_banco[i][j])))
+
+
 def inserir():
 
     nome = str(formulario.lineEdit_Nome.text())
@@ -23,13 +38,23 @@ def inserir():
     cursor.execute(comando_SQL, dados)
     conexao.commit()
 
-
+    formulario.lineEdit_Nome.setText('')
+    formulario.lineEdit_Cpf.setText('')
+    formulario.lineEdit_NumeroContato.setText('')
+    formulario.lineEdit_Cargo.setText('')
+    formulario.lineEdit_Data.setText('')
+    formulario.lineEdit_Pix.setText('')
+    
 
 
 app = QtWidgets.QApplication([])
-formulario = uic.loadUi("C:/Users/devse/OneDrive/Documentos/GitHub/SISTEMA-DE-GERENCIAMENTO/src/views/cadastro.ui")
-
+formulario = uic.loadUi("C:/Users/devse/OneDrive/Documentos/GitHub/SISTEMA-DE-GERENCIAMENTO/src/views/telas/formulario.ui")
 formulario.pushButton_Cadastrar.clicked.connect(inserir)
+
+formulario.pushButton_Relatorio.clicked.connect(lista)
+lista = uic.loadUi("C:/Users/devse/OneDrive/Documentos/GitHub/SISTEMA-DE-GERENCIAMENTO/src/views/telas/lista.ui")
+
+editar = uic.loadUi("C:/Users/devse/OneDrive/Documentos/GitHub/SISTEMA-DE-GERENCIAMENTO/src/views/telas/editar.ui")
 
 formulario.show()
 app.exec()

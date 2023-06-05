@@ -1,5 +1,9 @@
 from PyQt5 import uic, QtWidgets
 import mysql.connector
+from pathlib import Path
+
+caminho_arquivo = Path()
+print(caminho_arquivo)
 
 conexao = mysql.connector.connect(
     host = '127.0.0.1',
@@ -27,7 +31,7 @@ def inserir():
 
 
 app = QtWidgets.QApplication([])
-formulario = uic.loadUi("C:/Users/devse/OneDrive/Documentos/GitHub/SISTEMA-DE-GERENCIAMENTO/src/views/telas/formulario.ui")
+formulario = uic.loadUi(caminho_arquivo)
 
 formulario.pushButton_Cadastrar.clicked.connect(inserir)
 

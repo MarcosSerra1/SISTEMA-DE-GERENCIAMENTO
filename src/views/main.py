@@ -1,6 +1,7 @@
 from PyQt5 import uic, QtWidgets
 import mysql.connector
 
+#CONEXAO COM O BANCO DE DADOS
 conexao = mysql.connector.connect(
     host = '127.0.0.1',
     user = 'root',
@@ -8,8 +9,10 @@ conexao = mysql.connector.connect(
     database = 'zeus'
 )
 
+#VARIAVEL GLOBAL
 numero_id = 0
 
+#FUNÇÃO EXCLUIR
 def excluir():
     remover = lista.tableWidget.currentRow()
     lista.tableWidget.removeRow(remover)
@@ -22,7 +25,7 @@ def excluir():
 
     conexao.commit()
 
-
+#FUNÇÃO EDITAR
 def editar():
     global numero_id
     dados = lista.tableWidget.currentRow()
@@ -44,6 +47,7 @@ def editar():
     editar.lineEdit_AlterarDataAdmissao.setText(str(leitura_banco[0][5]))
     editar.lineEdit_AlterarPix.setText(str(leitura_banco[0][6]))
 
+#FUNÇÃO SALVAR ALTERAÇÃO
 def salvar_alteracao():
     global numero_id
 
@@ -64,6 +68,7 @@ def salvar_alteracao():
 
     conexao.commit()
 
+#FUNÇÃO LISTA
 def lista():
     lista.show()
     cursor = conexao.cursor()
@@ -79,6 +84,7 @@ def lista():
             lista.tableWidget.setItem(i, j, QtWidgets.QTableWidgetItem(str(leitura_banco[i][j])))
 
 
+#FUNÇÃO INSERIR 
 def inserir():
 
     nome = str(formulario.lineEdit_Nome.text())

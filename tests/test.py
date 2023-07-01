@@ -1,15 +1,12 @@
 from PyQt5 import uic, QtWidgets
-#import mysql.connector
-import conexaomysql
+import mysql.connector
 
-"""conexao = mysql.connector.connect(
+conexao = mysql.connector.connect(
     host = '127.0.0.1',
     user = 'root',
     password = '',
     database = 'zeus'
-)"""
-
-print(conexaomysql)
+)
 
 numero_id = 0
 
@@ -103,14 +100,20 @@ def inserir():
     formulario.lineEdit_Cargo.setText('')
     formulario.lineEdit_Data.setText('')
     formulario.lineEdit_Pix.setText('')
-    
 
+def iniciar():
+    iniciar.show()
 
 app = QtWidgets.QApplication([])
-formulario = uic.loadUi("C:/Users/devse/OneDrive/Documentos/GitHub/SISTEMA-DE-GERENCIAMENTO/src/views/telas/formulario.ui")
+iniciar = uic.loadUi("C:/Users/devse/OneDrive/Documentos/GitHub/SISTEMA-DE-GERENCIAMENTO/src/views/telas/telainicio.ui")
+#iniciar.pushButton_Cadastrar.clicked.connect(inserir)
+#iniciar.pushButton_Relatorio.clicked.connect(lista)
+
+
+'''formulario = uic.loadUi("C:/Users/devse/OneDrive/Documentos/GitHub/SISTEMA-DE-GERENCIAMENTO/src/views/telas/lista.ui")
 formulario.pushButton_Cadastrar.clicked.connect(inserir)
 formulario.pushButton_Relatorio.clicked.connect(lista)
-
+'''
 lista = uic.loadUi("C:/Users/devse/OneDrive/Documentos/GitHub/SISTEMA-DE-GERENCIAMENTO/src/views/telas/lista.ui")
 lista.pushButton_AlterarRegistro.clicked.connect(editar)
 lista.pushButton_ApagarRegistro.clicked.connect(excluir)
@@ -118,5 +121,5 @@ lista.pushButton_ApagarRegistro.clicked.connect(excluir)
 editar = uic.loadUi("C:/Users/devse/OneDrive/Documentos/GitHub/SISTEMA-DE-GERENCIAMENTO/src/views/telas/editar.ui")
 editar.pushButton_ConfirmarAlteracao.clicked.connect(salvar_alteracao)
 
-formulario.show()
+iniciar.show()
 app.exec()

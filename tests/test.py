@@ -72,15 +72,14 @@ def lista():
     leitura_banco = cursor.fetchall()
 
     lista.tableWidget.setRowCount(len(leitura_banco))
-    lista.tableWidget.setColumnCount(7)
+    lista.tableWidget.setColumnCount(10)
 
     for i in range (0, len(leitura_banco)): # i = linhas
-        for j in range (0, 7): # j = colunas
+        for j in range (0, 10): # j = colunas 
             lista.tableWidget.setItem(i, j, QtWidgets.QTableWidgetItem(str(leitura_banco[i][j])))
 
 
 def inserir():
-
     nome = str(formulario.lineEdit_Nome.text())
     cpf = str(formulario.lineEdit_Cpf.text())
     nContato = str(formulario.lineEdit_NumeroContato.text())
@@ -100,20 +99,14 @@ def inserir():
     formulario.lineEdit_Cargo.setText('')
     formulario.lineEdit_Data.setText('')
     formulario.lineEdit_Pix.setText('')
+    
 
-def iniciar():
-    iniciar.show()
 
 app = QtWidgets.QApplication([])
-iniciar = uic.loadUi("C:/Users/devse/OneDrive/Documentos/GitHub/SISTEMA-DE-GERENCIAMENTO/src/views/telas/telainicio.ui")
-#iniciar.pushButton_Cadastrar.clicked.connect(inserir)
-#iniciar.pushButton_Relatorio.clicked.connect(lista)
-
-
-'''formulario = uic.loadUi("C:/Users/devse/OneDrive/Documentos/GitHub/SISTEMA-DE-GERENCIAMENTO/src/views/telas/lista.ui")
+formulario = uic.loadUi("C:/Users/devse/OneDrive/Documentos/GitHub/SISTEMA-DE-GERENCIAMENTO/src/views/telas/formulario.ui")
 formulario.pushButton_Cadastrar.clicked.connect(inserir)
 formulario.pushButton_Relatorio.clicked.connect(lista)
-'''
+
 lista = uic.loadUi("C:/Users/devse/OneDrive/Documentos/GitHub/SISTEMA-DE-GERENCIAMENTO/src/views/telas/lista.ui")
 lista.pushButton_AlterarRegistro.clicked.connect(editar)
 lista.pushButton_ApagarRegistro.clicked.connect(excluir)
@@ -121,5 +114,5 @@ lista.pushButton_ApagarRegistro.clicked.connect(excluir)
 editar = uic.loadUi("C:/Users/devse/OneDrive/Documentos/GitHub/SISTEMA-DE-GERENCIAMENTO/src/views/telas/editar.ui")
 editar.pushButton_ConfirmarAlteracao.clicked.connect(salvar_alteracao)
 
-iniciar.show()
+formulario.show()
 app.exec()

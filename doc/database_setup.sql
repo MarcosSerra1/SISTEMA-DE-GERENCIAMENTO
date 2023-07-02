@@ -1,3 +1,5 @@
+#Script para criar a estrutura da tabela de funcionários.
+
 CREATE DATABASE zeus
 DEFAULT CHARACTER SET utf8mb4
 DEFAULT COLLATE utf8mb4_general_ci;
@@ -12,7 +14,8 @@ CREATE TABLE funcionarios (
 	cargo VARCHAR(50),
 	data_admissao DATE NOT NULL,
 	pix VARCHAR(50),
+	camisa VARCHAR(3),
+	calca VARCHAR(3),
+	bota VARCHAR(3),
 	PRIMARY KEY (id_funcionarios)
 );
-	
-INSERT INTO funcionarios (nome, cpf, n_contato, cargo, data_admissao, pix) VALUES (%s, %s, %s, %s, %s, %s)

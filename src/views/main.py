@@ -80,7 +80,7 @@ def lista():
     lista.tableWidget.setColumnCount(7)
 
     for i in range (0, len(leitura_banco)): # i = linhas
-        for j in range (0, 7): # j = colunas
+        for j in range (0, 7): # j = colunas 
             lista.tableWidget.setItem(i, j, QtWidgets.QTableWidgetItem(str(leitura_banco[i][j])))
 
 

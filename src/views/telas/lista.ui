@@ -111,7 +111,8 @@
           </font>
          </property>
          <property name="styleSheet">
-          <string notr="true">font: 11pt &quot;Arial&quot;;</string>
+          <string notr="true">font: 11pt &quot;Arial&quot;;
+</string>
          </property>
          <column>
           <property name="text">
@@ -225,7 +226,7 @@
           </property>
           <property name="font">
            <font>
-            <pointsize>10</pointsize>
+            <pointsize>11</pointsize>
             <weight>75</weight>
             <bold>true</bold>
            </font>
@@ -255,7 +256,7 @@
          </property>
          <property name="maximumSize">
           <size>
-           <width>167</width>
+           <width>160</width>
            <height>16777215</height>
           </size>
          </property>

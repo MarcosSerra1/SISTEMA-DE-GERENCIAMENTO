@@ -38,6 +38,10 @@ O projeto está em constante desenvolvimento, buscando adicionar novas funcional
 
 :heavy_check_mark: - `Funcionalidade 4`: Exclusão de funcionários: Permite remover funcionários do sistema, caso não sejam mais necessários.
 
+<p align="center">
+   <img src="https://github.com/MarcosSerra1/SISTEMA-DE-GERENCIAMENTO/blob/main/doc/V%C3%ADdeo%20sem%20t%C3%ADtulo%20%E2%80%90%20Feito%20com%20o%20Clipchamp.gif"/>
+</p>
+
 ## Tecnologias utilizadas
 O Arcus utiliza as seguintes tecnologias:
 

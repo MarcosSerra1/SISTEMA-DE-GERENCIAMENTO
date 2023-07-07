@@ -1,11 +1,13 @@
-#Script para criar a estrutura da tabela de funcionários.
+# Script para criar a estrutura da tabela de funcionários.
 
+# Banco de Dados
 CREATE DATABASE zeus
 DEFAULT CHARACTER SET utf8mb4
 DEFAULT COLLATE utf8mb4_general_ci;
 
 USE zeus;
 
+# Tabela de funcionarios
 CREATE TABLE funcionarios (
 	id_funcionarios INT NOT NULL auto_increment,
 	nome VARCHAR(100) NOT NULL,

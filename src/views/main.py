@@ -43,6 +43,9 @@ def editar():
     editar.lineEdit_AlterarCargo.setText(str(leitura_banco[0][4]))
     editar.lineEdit_AlterarDataAdmissao.setText(str(leitura_banco[0][5]))
     editar.lineEdit_AlterarPix.setText(str(leitura_banco[0][6]))
+    editar.lineEdit_Alterar_Camisa.setText(str(leitura_banco[0][7]))
+    editar.lineEdit_Alterar_Calca.setText(str(leitura_banco[0][8]))
+    editar.lineEdit_Alterar_Bota.setText(str(leitura_banco[0][9]))
 
 def salvar_alteracao():
     global numero_id
@@ -54,9 +57,12 @@ def salvar_alteracao():
     cargo =  editar.lineEdit_AlterarCargo.text()
     data_admissao = editar.lineEdit_AlterarDataAdmissao.text()
     pix = editar.lineEdit_AlterarPix.text()
+    camisa = editar.lineEdit_Alterar_Camisa.text()
+    calca = editar.lineEdit_Alterar_Calca.text()
+    bota = editar.lineEdit_Alterar_Bota.text()
 
     cursor = conexao.cursor()
-    cursor.execute("UPDATE funcionarios SET id_funcionarios='{}', nome='{}', cpf='{}', n_contato='{}', cargo='{}', data_admissao='{}', pix='{}' WHERE id_funcionarios={}". format(id, nome, cpf, n_contato, cargo, data_admissao, pix, numero_id))
+    cursor.execute("UPDATE funcionarios SET id_funcionarios='{}', nome='{}', cpf='{}', n_contato='{}', cargo='{}', data_admissao='{}', pix='{}', camisa='{}', calca='{}', bota='{}' WHERE id_funcionarios={}". format(id, nome, cpf, n_contato, cargo, data_admissao, pix, camisa, calca, bota, numero_id))
 
     editar.close()
     lista.close()
@@ -72,10 +78,10 @@ def lista():
     leitura_banco = cursor.fetchall()
 
     lista.tableWidget.setRowCount(len(leitura_banco))
-    lista.tableWidget.setColumnCount(7)
+    lista.tableWidget.setColumnCount(10)
 
     for i in range (0, len(leitura_banco)): # i = linhas
-        for j in range (0, 7): # j = colunas 
+        for j in range (0, 10): # j = colunas 
             lista.tableWidget.setItem(i, j, QtWidgets.QTableWidgetItem(str(leitura_banco[i][j])))
 
 
@@ -87,10 +93,13 @@ def inserir():
     cargo = str(formulario.lineEdit_Cargo.text())
     dataAdmissao = str(formulario.lineEdit_Data.text())
     pix = str(formulario.lineEdit_Pix.text())
+    camisa = str(formulario.lineEdit_Camisa.text())
+    calca = str(formulario.lineEdit_Calca.text())
+    bota = str(formulario.lineEdit_Bota.text())
 
     cursor = conexao.cursor()
-    comando_SQL = 'INSERT INTO funcionarios (nome, cpf, n_contato, cargo, data_admissao, pix) VALUES (%s, %s, %s, %s, %s, %s)'
-    dados = (nome, cpf, nContato, cargo, dataAdmissao, pix)
+    comando_SQL = 'INSERT INTO funcionarios (nome, cpf, n_contato, cargo, data_admissao, pix, camisa, calca, bota) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)'
+    dados = (nome, cpf, nContato, cargo, dataAdmissao, pix, camisa, calca, bota)
     cursor.execute(comando_SQL, dados)
     conexao.commit()
 
@@ -100,11 +109,14 @@ def inserir():
     formulario.lineEdit_Cargo.setText('')
     formulario.lineEdit_Data.setText('')
     formulario.lineEdit_Pix.setText('')
+    formulario.lineEdit_Camisa.setText('')
+    formulario.lineEdit_Calca.setText('')
+    formulario.lineEdit_Bota.setText('')
     
 
 
 app = QtWidgets.QApplication([])
-formulario = uic.loadUi("C:/Users/devse/OneDrive/Documentos/GitHub/SISTEMA-DE-GERENCIAMENTO/src/views/telas/formulario.ui")
+formulario = uic.loadUi("C:/Users/devse/OneDrive/Documentos/GitHub/SISTEMA-DE-GERENCIAMENTO/src/views/telas/formulario_test.ui")
 formulario.pushButton_Cadastrar.clicked.connect(inserir)
 formulario.pushButton_Relatorio.clicked.connect(lista)
 
